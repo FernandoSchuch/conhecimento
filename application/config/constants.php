@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* Constantes manuais */
+
+define('TCCARACTER', 'CARACETER');
+define('TCDATA',     'DATA');
+define('TCDATAHORA', 'DATAHORA');
+define('TCNUMERO',   'NUMERO');
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

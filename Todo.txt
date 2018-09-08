@@ -1,0 +1,4 @@
+Controlar PK duplicada conhecimento
+Abrir modal de "carregando..." ao salvar pedido (beforeSend)
+Ver como carregar sempre o topo e o rodapé e colocar as uses de js/css neles
+Criar transação para salvar no banco? ver savepoint e rollbacksavepoint
