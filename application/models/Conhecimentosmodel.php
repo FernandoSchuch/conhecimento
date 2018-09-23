@@ -7,12 +7,12 @@
         }        
         
         public function getByIdNodo($id) {
-            if($id != FALSE) {
+            if($id) {
                 $query = $this->db->get_where('conhecimentos', array('coh_conhecimento' => $id));
                 return $query->row_array();
             }
             else {
-                return FALSE;
+                return false;
             }
         }
         
@@ -26,13 +26,21 @@
         }
         
         public function getProximoCodigoPk(){
-            $query = $this->db->query("select coalesce(max(coh_conhecimento), 0) + 1 as proximo_codigo from conhecimentos");
-            return $query->row_array()['proximo_codigo'];
+           return parent::getProximoCodigoPK('coh_conhecimento', 'conhecimentos');            
         }
         
         public function insere($conhecimento){
             if (!$this->db->insert('conhecimentos', $conhecimento))
                 throw new Exception ($this->db->error()['message']);                
         }
+        
+        public function atualiza($conhecimento){
+            $cohConhecimento = $conhecimento['coh_conhecimento'];
+            unset($conhecimento['coh_conhecimento']);
+            
+            if (!$this->db->update('conhecimentos', $conhecimento, array('coh_conhecimento' => $cohConhecimento)))
+                throw new Exception ($this->db->error()['message']);
+        }
+        
     }
 ?>

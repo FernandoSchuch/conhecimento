@@ -1,17 +1,16 @@
 <?php
 if(! defined ( 'BASEPATH' )) exit ( 'No direct script access allowed - busca' );
 
-class Busca extends MY_Controller {
-	
+class Busca extends MY_Controller {	
+        
 	public function __construct() {
             parent::__construct ();
             $this->load->model('conhecimentosmodel');
 	}
 	
 	public function getNodos(){            
-            $parametros = $this->input->post();
-            $dados      = $this->conhecimentosmodel->getByTexto($parametros['texto']);
-            
+            $parametros = $this->input->post();                            
+            $dados     = $this->conhecimentosmodel->getByTexto($parametros['texto']);
             $registros = array();		
             if ($dados){
                 foreach($dados as $linha){
@@ -35,6 +34,6 @@ class Busca extends MY_Controller {
             } else {
                 echo json_encode(array("id" => "X", "text" => "teste"));
             }
-	}
+	}               
 }	
 ?>

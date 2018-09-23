@@ -30,6 +30,11 @@ class Basemodel extends CI_Model {
         return $result;
         
     }
+    
+    public function getProximoCodigoPK($campo, $tabela){        
+        $query = $this->db->query("select coalesce(max(" . $campo . "), 0) + 1 as proximo_codigo from " . $tabela);
+        return $query->row_array()['proximo_codigo'];
+    }
 
 }
  
